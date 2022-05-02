@@ -12,16 +12,39 @@ import './styles/app.scss';
 import './bootstrap';
 
 import 'axios/dist/axios.min.js';
-import './components/react/name';
-import './components/react/card';
+// import './components/react/name';
+// import './components/react/card';
 
 
-// import Vue from 'vue';
+import * as Vue from 'vue'
 
-// import Exemple from './components/vue/Exemple';
+import Exemple from './components/vue/Exemple';
 
 
 // new Vue({
 //     el: '#app',
 //     components: {Exemple},
 // });
+
+// Create an app using `createApp()` that uses the `hello` component
+const app = Vue.createApp({
+    // Displays "Hello, World" initially, changes based on input
+    template: '<exemple></exemple>'
+  });
+  
+  // Register the `hello` component
+  app.component('exemple', {
+    data: () => ({
+      name: 'exemple'
+    }),
+    template: `
+      <div>
+        <div>
+          <input v-model="name"></input>
+        </div>
+        <h1>Hello, {{name}}</h1>
+      </div>
+    `
+  });
+  
+  app.mount('#app');
